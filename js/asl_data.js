@@ -1,0 +1,41 @@
+const aslAlphabet = [
+    { letter: "A", image: "images/A.png", description: "Fist with thumb resting on the side." },
+    { letter: "B", image: "images/B.png", description: "Palm facing forward, fingers together, thumb across the palm." },
+    { letter: "C", image: "images/C.png", description: "Hand forms the shape of the letter C." },
+    { letter: "D", image: "images/D.png", description: "Index finger points up, other fingers touch the thumb." },
+    { letter: "E", image: "images/E.png", description: "Fingertips curl down to touch the thumb." },
+    { letter: "F", image: "images/F.png", description: "Thumb and index finger touch to form a circle, other fingers extended." },
+    { letter: "G", image: "images/G.png", description: "Index finger and thumb parallel, hand sideways." },
+    { letter: "H", image: "images/H.png", description: "Index and middle fingers extended together sideways." },
+    { letter: "I", image: "images/I.png", description: "Pinky finger extended, other fingers closed." },
+    { letter: "J", image: "images/J.png", description: "Pinky draws a J shape in the air." },
+    { letter: "K", image: "images/K.png", description: "Index and middle fingers raised in a V shape; thumb touches middle finger." },
+    { letter: "L", image: "images/L.png", description: "Index finger up, thumb extended to form an L shape." },
+    { letter: "M", image: "images/M.png", description: "Thumb tucked under three fingers." },
+    { letter: "N", image: "images/N.png", description: "Thumb tucked under two fingers." },
+    { letter: "O", image: "images/O.png", description: "Fingers together forming the shape of an O." },
+    { letter: "P", image: "images/P.png", description: "Same as K but oriented downward." },
+    { letter: "Q", image: "images/Q.png", description: "Thumb and index finger point downward." },
+    { letter: "R", image: "images/R.png", description: "Index and middle fingers crossed." },
+    { letter: "S", image: "images/S.png", description: "Fist with thumb in front of fingers." },
+    { letter: "T", image: "images/T.png", description: "Thumb tucked between the index and middle fingers." },
+    { letter: "U", image: "images/U.png", description: "Index and middle fingers together pointing up." },
+    { letter: "V", image: "images/V.png", description: "Index and middle fingers form a V shape." },
+    { letter: "W", image: "images/W.png", description: "Three fingers extended forming a W shape." },
+    { letter: "X", image: "images/X.png", description: "Bent index finger with others closed." },
+    { letter: "Y", image: "images/Y.png", description: "Thumb and pinky extended, other fingers closed." },
+    { letter: "Z", image: "images/Z.png", description: "Index finger draws the letter Z in the air." }
+];
+
+const basicWords = [
+    { word: "Hello", image: "images/hello.png", description: "Hand touches forehead and moves outwards." },
+    { word: "Thank You", image: "images/thank_you.png", description: "Flat hand moves from chin outward towards the person." },
+    { word: "Yes", image: "images/yes.png", description: "Hand shakes up and down like a nodding head." },
+    { word: "No", image: "images/no.png", description: "Index and middle fingers tap the thumb several times." },
+    { word: "Please", image: "images/please.png", description: "Open hand is rubbed in a circle on the chest." },
+    { word: "Water", image: "images/water.png", description: "W handshape taps the chin." },
+    { word: "Help", image: "images/help.png", description: "Closed fist on top of open palm, both moving up." },
+    { word: "Love", image: "images/love.png", description: "Crossed arms over the chest." },
+    { word: "Good", image: "images/good.png", description: "Flat hand moves from chin to the opposite palm." },
+    { word: "I/Me", image: "images/i_me.png", description: "Point index finger to your chest." }
+];
