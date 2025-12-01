@@ -5,6 +5,14 @@ body {
     font-family: 'Poppins', sans-serif; /* Используем Google Font */
     color: #333; /* Делаем текст немного темнее */
     background-color: #f8f9fa; /* Светлый фон */
+    display: flex; /* Включаем Flexbox */
+    flex-direction: column; /* Элементы идут сверху вниз */
+    min-height: 100vh; /* Минимальная высота - 100% высоты окна просмотра */
+    margin: 0; /* Убираем стандартные отступы */
+}
+
+main {
+    flex-grow: 1; /* Разрешаем основному контенту занимать все доступное место */
 }
 
 /* Navbar */
