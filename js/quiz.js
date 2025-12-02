@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Установка лимитов для количества вопросов (по умолчанию 10)
         const maxQuestions = aslAlphabet.length;
         questionCountInput.max = maxQuestions; 
-        questionCountInput.placeholder = `Максимум ${maxQuestions}`;
+        questionCountInput.placeholder = `Max ${maxQuestions}`;
         
         // Показываем только область настройки
         setupArea.style.display = 'block';
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         quizArea.style.display = 'none';
         resultsArea.style.display = 'block';
         const percentage = Math.round((score / totalQuestions) * 100);
-        finalScoreDisplay.textContent = `${score} из ${totalQuestions} (${percentage}%)`;
+        finalScoreDisplay.textContent = `${score} out of ${totalQuestions} (${percentage}%)`;
     }
 
     // --- Логика вопросов ---
@@ -95,8 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
         currentQuestionIndex++;
         
         // Обновляем информацию о вопросе и счете
-        questionInfo.textContent = `Вопрос ${currentQuestionIndex} из ${totalQuestions}`;
-        scoreInfo.textContent = `Счёт: ${score}`;
+        questionInfo.textContent = `Question ${currentQuestionIndex} out of ${totalQuestions}`;
+        scoreInfo.textContent = `Score: ${score}`;
         
         // Выбираем 3 случайных неправильных ответа
         let incorrectAnswers = aslAlphabet.filter(item => item.letter !== currentQuestion.letter);
@@ -131,12 +131,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (selectedOption === correctOption) {
             score++; // Увеличиваем счет
-            scoreInfo.textContent = `Счёт: ${score}`; 
-            resultMessage.textContent = '✅ Правильно!';
+            scoreInfo.textContent = `Score: ${score}`; 
+            resultMessage.textContent = '✅ Correct!';
             resultMessage.className = 'mt-3 fw-bold text-success';
             clickedButton.classList.add('btn-success');
         } else {
-            resultMessage.textContent = `❌ Неправильно! Правильный ответ: ${correctOption}`;
+            resultMessage.textContent = `❌ Not Correct! The correct answer is: ${correctOption}`;
             resultMessage.className = 'mt-3 fw-bold text-danger';
             clickedButton.classList.add('btn-danger');
             
@@ -151,9 +151,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Обновляем текст кнопки "Далее"
         if (currentQuestionIndex < totalQuestions) {
-             nextButton.textContent = 'Следующий вопрос';
+             nextButton.textContent = 'Next question';
         } else {
-             nextButton.textContent = 'Завершить тест и посмотреть результат';
+             nextButton.textContent = 'Finish the test and see the result';
         }
         
         nextButton.style.display = 'block'; 
