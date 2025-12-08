@@ -37,5 +37,5 @@ const basicWords = [
     { word: "Help", image: "images/help.png", description: "Closed fist on top of open palm, both moving up." },
     { word: "Love", image: "images/love.png", description: "Crossed arms over the chest." },
     { word: "Good", image: "images/good.png", description: "Flat hand moves from chin to the opposite palm." },
-    { word: "I/Me", image: "images/i_me.png", description: "Point index finger to your chest." }
+    { word: "Home", image: "images/home.png", description: "Fingers close together, thumb on the side. Hand touches chin and then cheek." }
 ];
