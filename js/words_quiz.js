@@ -165,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
              finalScoreDisplay.classList.add('text-danger');
              finalScoreDisplay.classList.remove('text-primary', 'text-success');
         }
+        saveScore(score, totalQuestions);
     }
 
     // === ОБРАБОТЧИКИ СОБЫТИЙ ===
@@ -180,4 +181,61 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsArea.style.display = 'none';
         questionCountInput.value = Math.min(10, basicWords.length);
     });
+    // ... (в конце файла words_quiz.js, перед });) ...
+
+    function saveScore(score, totalQuestions) {
+        // 1. Получаем токен из локального хранилища
+        const token = localStorage.getItem('token');
+        const username = localStorage.getItem('username'); // Для отображения сообщения
+
+        if (!token) {
+            alert('Score was not saved: Please log in to save your results.');
+            // Перенаправить на вход:
+            // window.location.href = 'login.html';
+            return;
+        }
+
+        const quizType = (/* В quiz.js: 'alphabet' */ 'words'); // Вставьте нужный тип викторины
+        
+        const scoreData = {
+            quiz_type: quizType, 
+            score: score 
+        };
+
+        // 2. Отправляем запрос с заголовком Authorization
+        fetch('http://localhost:3000/api/scores', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // *** Ключевой момент: Отправляем токен в заголовке ***
+                'Authorization': `Bearer ${token}` 
+            },
+            body: JSON.stringify(scoreData),
+        })
+        .then(response => {
+            if (response.status === 401 || response.status === 403) {
+                // Токен недействителен или отсутствует
+                alert('Session expired. Please log in again.');
+                localStorage.clear();
+                window.location.href = 'login.html';
+                return;
+            }
+            if (!response.ok) {
+                return response.json().then(err => {
+                    throw new Error(err.error || `Server error: ${response.status}`);
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Score saved successfully:', data);
+            alert(`Score saved successfully for ${username}!`);
+        })
+        .catch(error => {
+            console.error('Error saving score:', error);
+            alert(`Failed to save score: ${error.message}`);
+        });
+    }
+
+// ... (продолжение кода words_quiz.js) ...
 });
