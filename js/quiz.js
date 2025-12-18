@@ -181,11 +181,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // window.location.href = 'login.html';
             return;
         }
-
-        const quizType = (/* В quiz.js: 'alphabet' */ 'words'); // Вставьте нужный тип викторины
         
         const scoreData = {
-            quiz_type: quizType, 
+            quiz_type: 'alphabet', 
             score: score 
         };
 
