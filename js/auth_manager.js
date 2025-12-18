@@ -1,7 +1,4 @@
-// =======================================================
-// js/auth_manager.js
 // Управляет статусом входа и выходом
-// =======================================================
 
 document.addEventListener('DOMContentLoaded', () => {
     const authControls = document.getElementById('auth-controls');
@@ -22,6 +19,22 @@ document.addEventListener('DOMContentLoaded', () => {
             userStatus.textContent = `Welcome, ${username}!`;
             authControls.appendChild(userStatus);
 
+            const currentPath = window.location.pathname;
+            const navBtn = document.createElement('a');
+        
+            if (currentPath.includes('scores.html')) {
+                // If on the scores page, show "Back to Home"
+                navBtn.className = 'btn btn-outline-info me-2';
+                navBtn.href = 'index.html';
+                navBtn.textContent = 'Home';
+            } else {
+                // If on any other page, show "My Scores"
+                navBtn.className = 'btn btn-outline-info me-2';
+                navBtn.href = 'scores.html';
+                navBtn.textContent = 'My Scores';
+            }
+            authControls.appendChild(navBtn);
+            
             // 2. Кнопка Выхода
             const logoutButton = document.createElement('button');
             logoutButton.className = 'btn btn-outline-light';
@@ -30,8 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
             authControls.appendChild(logoutButton);
 
         } else {
-            // Пользователь не залогинен
-            
             // 1. Кнопка Входа
             const loginLink = document.createElement('a');
             loginLink.className = 'btn btn-outline-light me-2';

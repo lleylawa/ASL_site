@@ -22,7 +22,6 @@ pool.connect()
         client.release(); // Освобождаем клиент после успешной проверки
     })
     .catch(err => {
-        // !!! ЭТОТ БЛОК ВЫВЕДЕТ ТОЧНУЮ ОШИБКУ !!!
         console.error('!!! DATABASE CONNECTION ERROR !!!\n', err.stack);
         // Принудительное завершение процесса при критической ошибке
         process.exit(1); 
@@ -31,7 +30,6 @@ pool.connect()
 app.use(cors());
 app.use(express.json());
 
-// ... (после app.use(express.json());)
 
 // Middleware для проверки JWT-токена
 const authenticateToken = (req, res, next) => {
@@ -144,7 +142,7 @@ app.post('/api/scores', authenticateToken, async (req, res) => {
             return res.status(400).json({ error: 'Missing required fields: quiz_type or score.' });
         }
 
-        // SQL-запрос для вставки данных (Вставляем user_id)
+        // SQL-запрос для вставки данных 
         const result = await pool.query(
             'INSERT INTO scores (user_id, quiz_type, score) VALUES ($1, $2, $3) RETURNING *',
             [user_id, quiz_type, score]
@@ -162,14 +160,19 @@ app.post('/api/scores', authenticateToken, async (req, res) => {
 });
 
 
-// API-маршрут для получения всех результатов
-app.get('/api/scores', async (req, res) => {
+app.get('/api/scores', authenticateToken, async (req, res) => {
     try {
-        const result = await pool.query('SELECT * FROM scores ORDER BY date_submitted DESC');
+        const userId = req.user.id; 
+
+        const result = await pool.query(
+            'SELECT quiz_type, score, date_submitted FROM scores WHERE user_id = $1 ORDER BY date_submitted DESC', 
+            [userId]
+        );
+        
         res.status(200).json(result.rows);
     } catch (err) {
-        console.error('Error fetching scores:', err.message);
-        res.status(500).json({ error: 'Failed to fetch scores.' });
+        console.error('DATABASE ERROR:', err.message);
+        res.status(500).json({ error: 'Database error', details: err.message });
     }
 });
 
