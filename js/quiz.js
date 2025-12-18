@@ -181,10 +181,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // window.location.href = 'login.html';
             return;
         }
-        
+        const percentage = Math.round((score / totalQuestions) * 100);
+
         const scoreData = {
             quiz_type: 'alphabet', 
-            score: score 
+            score: percentage
         };
 
         // 2. Отправляем запрос с заголовком Authorization

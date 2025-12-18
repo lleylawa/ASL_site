@@ -194,10 +194,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // window.location.href = 'login.html';
             return;
         }
+
+        const percentage = Math.round((score / totalQuestions) * 100); // Расчет процента
         
         const scoreData = {
             quiz_type: 'words', 
-            score: score 
+            score: percentage 
         };
 
         // 2. Отправляем запрос с заголовком Authorization
